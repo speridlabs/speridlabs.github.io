@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "prueba" ]
 
 jobs:
   build:
@@ -38,8 +38,8 @@ jobs:
       - name: Typecheck & Build
         run: pnpm build
 
-       - name: Create 404.html for GitHub Pages routing
-         run: cp dist/index.html dist/404.html
+      - name: Create 404.html for GitHub Pages routing
+        run: cp dist/index.html dist/404.html
 
       - name: Upload dist as Pages artifact
         uses: actions/upload-pages-artifact@v3
