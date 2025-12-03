@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer"
 import { HomePage } from "@/pages/home"
 import { ProjectsPage } from "@/pages/projects"
 import { ProjectDetail } from "@/pages/project-detail"
+import { NotFoundPage } from "@/pages/not-found"
 
 function RootLayout() {
 	return (
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
 			{
 				path: "projects/:slug",
 				element: <ProjectDetail />,
+			},
+			{
+				path: "*",
+				element: <NotFoundPage />,
 			},
 		],
 	},

@@ -2,23 +2,16 @@ import { Button } from "@/components/ui/button"
 import { FileText, Github, Youtube, Share2, ArrowLeft } from "lucide-react"
 import { useParams, Link } from "react-router-dom"
 import { projects } from "@/data/projects"
+import { NotFoundPage } from "./not-found"
 
 export function ProjectDetail() {
 	const { slug } = useParams()
 
-	// 1. Find the project matching the URL slug
 	const project = projects.find((p) => p.slug === slug)
 
-	// 2. Handle 404 Case (Project not found)
 	if (!project) {
 		return (
-			<div className="flex flex-col items-center justify-center py-20 text-center">
-				<h1 className="text-4xl font-bold mb-4">Project not found</h1>
-				<p className="text-muted-foreground mb-8">The project you are looking for does not exist.</p>
-				<Button asChild>
-					<Link to="/projects"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Projects</Link>
-				</Button>
-			</div>
+			<NotFoundPage />
 		)
 	}
 
