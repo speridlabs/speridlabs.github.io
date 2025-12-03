@@ -1,0 +1,17 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+branch_name=$(git branch --show-current)
+
+if [ "$branch_name" = "master" ]; then
+  echo "Commit to 'master' detected. Running lint..."
+  
+  pnpm lint
+  
+  if [ $? -ne 0 ]; then
+    echo "Lint failed! Commit blocked."
+    exit 1
+  fi
+  
+  echo "Lint passed. Committing..."
+fi
